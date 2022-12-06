@@ -63,9 +63,9 @@ Inside Family folder, create a file called CountContext.jsx
 
 import React from "react";
 
-const countContext = React.createContext();
+const CountContext = React.createContext();
 
-export default countContext;
+export default CountContext;
 ```
 
 Note, this does not do a whole lot for us right now.
@@ -170,10 +170,13 @@ But not with hooks! useContext makes it WAAAAAY easier.
 
 Let's add a button in the Child component above <GrandChild />
 ```jsx
+// Family/Child.jsx
 <button onClick={addToCount}>Add to Count</button>
 ```
+TEST...
 
 ### Hands to Keyboard!
+GreatGrandChild had a baby! Congratulations! You know what to do.
 Let's create a GREAT-GREAT-GRAND-CHILD... let's useContext and pass down count...
 
 Only things nested inside that Provider are able to consume it.
@@ -203,15 +206,17 @@ But... What about updating the count stored in child from great great grandchild
 ```jsx
 // Family/Child.jsx
 
-<CountContext.Provider value={count, addToCount}>
+<CountContext.Provider value={{count, addToCount}}>
 bleh bleh bleh
 </CountContext.Provider>
 
 ```
+BIG ERROR MESSAGE NO! OH NO! Now what?
 
 and now in greatgreatgrandchild...
 ```jsx
-// Destructuring object...
+// Family/GreatGreatGrandChild.jsx
+// Destructuring object in GreatGrandChild and GreatGreatGrandChild as well.
 const {count, addToCount} = useContext(countContext)
 
 <button onClick={addToCount}>Increment Count</button>
